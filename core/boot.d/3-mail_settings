@@ -19,5 +19,9 @@ chown -R postfix:postfix /etc/postfix
 chown -R vmail:vmail /vmail
 chmod u+w /vmail
 
+# Give vmail ownership of all sieve folders
+chown -R vmail:vmail /sieve
+chmod u+w /sieve
+
 # Build a password file
 jq -r '.domains | .[] | select(.[0] != null) | .[] | select(.password != null) | [.email, .password] | join(":")' "$CONFIG_FILE" > /etc/dovecot/passwd

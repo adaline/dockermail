@@ -9,6 +9,7 @@ RUN apt-get update && apt-get install -y \
     ssl-cert \
     postfix \
     dovecot-imapd \
+    dovecot-sieve \
     jq && \
     apt-get clean && \
     rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/* && \
@@ -33,7 +34,10 @@ VOLUME ["/mail_settings"]
 # Volume to store email
 VOLUME ["/vmail"]
 
-# Add user vmail that ownes mail
+# Volume to store sieve-rules
+VOLUME ["/sieve"]
+
+# Add user vmail that ownes mail and sieve
 RUN groupadd -g 5000 vmail
 RUN useradd -g vmail -u 5000 vmail -d /vmail -m
 
