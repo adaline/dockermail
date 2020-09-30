@@ -1,7 +1,7 @@
 Dockermail
 ==========
 
-### Easy mail service in docker containers.
+### Easy mail service Docker containers.
 
 The setup is modular and has:
 * `core` -  base SMTP and IMAP server
